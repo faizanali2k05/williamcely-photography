@@ -384,7 +384,13 @@ section { padding: 6rem 0; }
 /* Specialties */
 .specialties { background: var(--bg-alt); }
 
-.cat-card { display: block; position: relative; color: var(--ink); }
+.cat-card { 
+    display: block; 
+    position: relative; 
+    color: var(--ink); 
+    overflow: hidden;
+    perspective: 1000px;
+}
 
 .cat-img {
     width: 100%;
@@ -392,21 +398,60 @@ section { padding: 6rem 0; }
     background-size: cover;
     background-position: center;
     background-color: #ddd;
-    transition: transform .9s ease, filter .6s ease;
-    filter: brightness(0.98);
+    transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1), filter .8s ease;
+    filter: brightness(0.95);
 }
-.cat-card:hover .cat-img { transform: scale(1.04); filter: brightness(0.88); }
+.cat-card:hover .cat-img { 
+    transform: scale(1.1) rotateY(5deg); 
+    filter: brightness(0.7); 
+}
 
-.cat-caption { text-align: center; padding: 1.25rem 0 0; }
+.cat-caption { 
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+    padding: 2rem; 
+    color: #fff;
+    opacity: 0;
+    transition: opacity .5s ease, transform .6s cubic-bezier(0.2, 1, 0.3, 1);
+    transform: translateY(20px);
+    z-index: 2;
+}
+.cat-card:hover .cat-caption { 
+    opacity: 1; 
+    transform: translateY(0);
+}
 
 .cat-caption h3 {
     font-family: var(--display);
-    font-size: clamp(1.15rem, 2.2vw, 1.6rem);
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
     font-weight: 400;
-    margin: 0 0 0.35rem;
-    transition: color .3s ease;
+    margin: 0 0 0.75rem;
+    color: #fff;
 }
-.cat-card:hover .cat-caption h3 { color: var(--accent); }
+
+.cat-desc {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    color: rgba(255,255,255,0.9);
+}
+
+.cat-caption .btn-line {
+    color: #fff;
+    border-color: #fff;
+    padding: 0.6rem 1.25rem;
+    font-size: 0.65rem;
+}
+.cat-caption .btn-line:hover {
+    background: #fff;
+    color: var(--ink) !important;
+}
 
 .cat-meta {
     font-family: var(--sans);
