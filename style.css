@@ -1,0 +1,187 @@
+/* 
+    William Cely Photography 
+    Custom Styles
+*/
+
+:root {
+    --gold: #D4AF37;
+    --dark-gold: #B8860B;
+    --dark: #333333;
+    --light: #F9F7F2;
+    --white: #FFFFFF;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .brand-name {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Navbar */
+.navbar {
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: block;
+    line-height: 1;
+    color: var(--dark);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.brand-sub {
+    font-size: 0.75rem;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--gold);
+}
+
+.nav-link {
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    margin: 0 10px;
+    color: var(--dark) !important;
+}
+
+.nav-link:hover {
+    color: var(--gold) !important;
+}
+
+/* Hero Section */
+.hero-section {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../images/hero-bg.jpg') center/cover no-repeat;
+    /* Fallback color if image missing */
+    background-color: #222;
+}
+
+.hero-section h1 {
+    letter-spacing: 2px;
+}
+
+/* Titles */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.title-underline {
+    width: 60px;
+    height: 3px;
+    background-color: var(--gold);
+    margin: 0 auto 30px;
+}
+
+/* Category Cards */
+.category-card {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.category-img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease;
+}
+
+.category-card:hover .category-img {
+    transform: scale(1.1);
+}
+
+.category-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    transition: background 0.3s ease;
+}
+
+.category-card:hover .category-overlay {
+    background: rgba(0,0,0,0.5);
+}
+
+.category-overlay h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Buttons */
+.btn-gold {
+    background-color: var(--gold);
+    color: var(--white);
+    border: none;
+    padding: 10px 25px;
+    border-radius: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-gold:hover {
+    background-color: var(--dark-gold);
+    color: var(--white);
+}
+
+.btn-outline-light {
+    border-radius: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Forms */
+.form-control, .form-select {
+    padding: 12px;
+    border-radius: 0;
+    border: 1px solid #ddd;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--gold);
+    box-shadow: none;
+}
+
+/* Footer */
+footer .social-links a {
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+footer .social-links a:hover {
+    color: var(--gold) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+}
