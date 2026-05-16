@@ -106,7 +106,7 @@ if (contactForm) {
     const btnPrev = lightbox.querySelector('.lightbox-prev');
     const btnNext = lightbox.querySelector('.lightbox-next');
 
-    const items = Array.from(document.querySelectorAll('.cat-grid .g-item img'));
+    const items = Array.from(document.querySelectorAll('.cat-grid .g-item img, .gallery-grid .g-item img'));
     if (!items.length) return;
 
     let current = 0;
