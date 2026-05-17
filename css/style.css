@@ -387,26 +387,28 @@ section { padding: 6rem 0; }
 .cat-card {
     display: flex;
     flex-direction: column;
-    background: var(--bg-deep);
-    color: #fff;
+    background: #fff;
+    color: var(--ink);
+    border: 1px solid var(--rule);
     border-radius: 12px;
     overflow: hidden;
     height: 100%;
-    transition: transform .35s ease, box-shadow .35s ease;
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
 }
 .cat-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 14px 32px rgba(0,0,0,0.18);
-    color: #fff;
+    box-shadow: 0 14px 32px rgba(0,0,0,0.1);
+    border-color: var(--accent);
+    color: var(--ink);
 }
 
 .cat-img {
     width: 100%;
     aspect-ratio: 4 / 5;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: #1a1a1a;
+    background-color: var(--bg-alt);
     transition: transform 1s cubic-bezier(0.2, 1, 0.3, 1);
 }
 .cat-card:hover .cat-img {
@@ -419,8 +421,9 @@ section { padding: 6rem 0; }
     flex-direction: column;
     gap: 0.5rem;
     text-align: left;
-    color: #fff;
+    color: var(--ink);
     flex: 1 1 auto;
+    background: #fff;
 }
 
 .cat-caption h3 {
@@ -428,7 +431,7 @@ section { padding: 6rem 0; }
     font-size: clamp(1.2rem, 2vw, 1.6rem);
     font-weight: 400;
     margin: 0;
-    color: #fff;
+    color: var(--ink);
 }
 
 .cat-desc {
@@ -437,7 +440,7 @@ section { padding: 6rem 0; }
     font-size: 0.95rem;
     line-height: 1.5;
     margin: 0 0 0.5rem;
-    color: rgba(255,255,255,0.7);
+    color: var(--ink-soft);
 }
 
 .cat-caption .btn-line {
@@ -641,6 +644,104 @@ section { padding: 6rem 0; }
     margin-right: auto;
 }
 
+/* Wider tab bar for 4 categories */
+.pkg-tabs.pkg-tabs-wide {
+    max-width: 640px;
+}
+.pkg-tabs.pkg-tabs-wide .pkg-tab {
+    padding: 0.85rem 0.75rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+}
+
+/* Panel intro */
+.pkg-intro { margin-bottom: 3rem; }
+.pkg-intro-title {
+    font-family: var(--display);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    margin: 0.4rem 0 0.5rem;
+}
+.pkg-intro-sub {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--ink-soft);
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+/* Bodas — beige / marble tones */
+.pkg-panel-bodas {
+    background: linear-gradient(180deg, #f9f4ec 0%, #f1e9da 100%);
+    padding: 3rem 1rem;
+    border: 1px solid #ece2cf;
+    margin-top: 1rem;
+}
+.pkg-panel-bodas .pkg-intro-title { color: #6b5435; }
+.pkg-panel-bodas .eyebrow { color: #a68651; }
+
+.pkg-card.pkg-wedding {
+    background: #fffdf8;
+    border-color: #e6d8be;
+}
+.pkg-card.pkg-wedding .pkg-rule { background: #b88c4a; }
+.pkg-card.pkg-wedding:hover {
+    border-color: #b88c4a;
+    box-shadow: 0 18px 40px rgba(140, 100, 50, 0.12);
+}
+
+.pkg-card.pkg-featured-wedding {
+    background: linear-gradient(180deg, #3a2f20 0%, #2a2014 100%);
+    border-color: #3a2f20;
+    color: #f3ece0;
+}
+.pkg-card.pkg-featured-wedding .pkg-eyebrow,
+.pkg-card.pkg-featured-wedding .pkg-features { color: #d6c8aa; }
+.pkg-card.pkg-featured-wedding .pkg-name,
+.pkg-card.pkg-featured-wedding .pkg-price .amt { color: #fff; }
+.pkg-card.pkg-featured-wedding .pkg-features li { border-bottom-color: #4a3d28; }
+.pkg-card.pkg-featured-wedding .pkg-rule { background: #d4a85e; }
+.pkg-card.pkg-featured-wedding .pkg-btn { color: #fff; border-color: #fff; }
+.pkg-card.pkg-featured-wedding .pkg-btn:hover { background: #fff; color: #2a2014 !important; }
+
+/* Quinceañeras — pink / fuchsia tones */
+.pkg-panel-quince {
+    background: linear-gradient(180deg, #fdf1f5 0%, #fbe3ed 100%);
+    padding: 3rem 1rem;
+    border: 1px solid #f3d2df;
+    margin-top: 1rem;
+}
+.pkg-panel-quince .pkg-intro-title { color: #8a2c54; }
+.pkg-panel-quince .eyebrow { color: #c0457c; }
+
+.pkg-card.pkg-quince {
+    background: #fffafb;
+    border-color: #f0c8d8;
+}
+.pkg-card.pkg-quince .pkg-rule { background: #d4477c; }
+.pkg-card.pkg-quince:hover {
+    border-color: #d4477c;
+    box-shadow: 0 18px 40px rgba(180, 60, 110, 0.12);
+}
+
+.pkg-card.pkg-featured-quince {
+    background: linear-gradient(180deg, #8a2c54 0%, #6e1e40 100%);
+    border-color: #8a2c54;
+    color: #fce6ee;
+}
+.pkg-card.pkg-featured-quince .pkg-eyebrow,
+.pkg-card.pkg-featured-quince .pkg-features { color: #f1c5d4; }
+.pkg-card.pkg-featured-quince .pkg-name,
+.pkg-card.pkg-featured-quince .pkg-price .amt { color: #fff; }
+.pkg-card.pkg-featured-quince .pkg-features li { border-bottom-color: #a83e6a; }
+.pkg-card.pkg-featured-quince .pkg-rule { background: #f4b8cd; }
+.pkg-card.pkg-featured-quince .pkg-badge { background: #d4477c; }
+.pkg-card.pkg-featured-quince .pkg-btn { color: #fff; border-color: #fff; }
+.pkg-card.pkg-featured-quince .pkg-btn:hover { background: #fff; color: #6e1e40 !important; }
+
+/* Servicios Destacados — Featured Services */
+.featured-services { background: var(--bg-alt); }
+.featured-services .cat-card { background: #fff; }
+
 /* Información Importante */
 .info-section { background: var(--bg-alt); }
 
@@ -825,12 +926,12 @@ section { padding: 6rem 0; }
     overflow: hidden;
     position: relative;
     display: block;
-    background: #1a1a1a;
+    background: var(--bg-alt);
 }
 .ig-item img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     transition: transform .6s ease, filter .3s ease;
 }
 .ig-item:hover img { transform: scale(1.06); filter: brightness(0.92); }
@@ -1101,6 +1202,21 @@ section { padding: 6rem 0; }
     .pkg-tabs { max-width: 280px; }
     .pkg-tab { font-size: 0.65rem; padding: 0.7rem 0.8rem; letter-spacing: 0.2em; }
 
+    .pkg-tabs.pkg-tabs-wide {
+        max-width: 100%;
+        flex-wrap: wrap;
+        border-radius: 18px;
+        gap: 4px;
+    }
+    .pkg-tabs.pkg-tabs-wide .pkg-tab {
+        flex: 1 1 45%;
+        font-size: 0.6rem;
+        padding: 0.65rem 0.5rem;
+        letter-spacing: 0.18em;
+    }
+    .pkg-intro-title { font-size: 1.5rem; }
+    .pkg-panel-bodas, .pkg-panel-quince { padding: 2rem 0.5rem; }
+
     .info-card { padding: 1.5rem 1.25rem; }
 
     .about-caption { padding: 1.75rem; }
@@ -1313,6 +1429,50 @@ section { padding: 6rem 0; }
 
 /* Category gallery grid — masonry (column-count) so each photo shows in its full, natural aspect ratio with no cropping */
 .cat-page { background: var(--bg); }
+
+/* Specialty subpage — intro + pricing blocks */
+.specialty-intro {
+    background: var(--bg);
+    padding: 5rem 0 3rem;
+    text-align: center;
+}
+.specialty-intro .intro-eyebrow {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 1rem;
+}
+.specialty-intro .intro-title {
+    font-family: var(--display);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    margin: 0 0 1.5rem;
+}
+.specialty-intro .intro-text {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 720px;
+    margin: 0 auto 1rem;
+    line-height: 1.7;
+}
+.specialty-intro .intro-rule {
+    width: 60px;
+    height: 1px;
+    background: var(--accent);
+    margin: 1.5rem auto 0;
+}
+
+.specialty-pricing {
+    background: var(--bg-alt);
+    padding: 5rem 0;
+}
+.specialty-pricing .section-head { margin-bottom: 3rem; }
+@media (max-width: 768px) {
+    .specialty-intro { padding: 3rem 0 2rem; }
+    .specialty-pricing { padding: 3rem 0; }
+}
 .cat-grid {
     column-count: 3;
     column-gap: 14px;

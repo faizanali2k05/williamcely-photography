@@ -60,20 +60,36 @@ onScroll();
 // Package tabs
 const pkgTabs = document.querySelectorAll('.pkg-tab');
 const pkgPanels = document.querySelectorAll('.pkg-panel');
-pkgTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        const target = tab.dataset.target;
-        pkgTabs.forEach(t => {
-            const active = t === tab;
-            t.classList.toggle('is-active', active);
-            t.setAttribute('aria-selected', active ? 'true' : 'false');
-        });
-        pkgPanels.forEach(p => {
-            p.classList.toggle('is-active', p.id === 'panel-' + target);
-        });
-        if (window.AOS) AOS.refresh();
+
+function activatePkgTab(target) {
+    let matched = false;
+    pkgTabs.forEach(t => {
+        const active = t.dataset.target === target;
+        if (active) matched = true;
+        t.classList.toggle('is-active', active);
+        t.setAttribute('aria-selected', active ? 'true' : 'false');
     });
+    pkgPanels.forEach(p => {
+        p.classList.toggle('is-active', p.id === 'panel-' + target);
+    });
+    if (window.AOS) AOS.refresh();
+    return matched;
+}
+
+pkgTabs.forEach(tab => {
+    tab.addEventListener('click', () => activatePkgTab(tab.dataset.target));
 });
+
+// Activate tab from URL hash (e.g. #panel-bodas)
+if (pkgTabs.length && window.location.hash.startsWith('#panel-')) {
+    const target = window.location.hash.replace('#panel-', '');
+    if (activatePkgTab(target)) {
+        setTimeout(() => {
+            const section = document.getElementById('paquetes');
+            if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+    }
+}
 
 // Contact form (demo — replace with real endpoint)
 const contactForm = document.getElementById('contactForm');
