@@ -91,7 +91,8 @@ if (pkgTabs.length && window.location.hash.startsWith('#panel-')) {
     }
 }
 
-// Contact form (demo — replace with real endpoint)
+// Contact form — sends the inquiry to WhatsApp with all the details
+const WHATSAPP_NUMBER = '18175699593'; // William Cely — (817) 569-9593
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
@@ -100,15 +101,33 @@ if (contactForm) {
         const btn = contactForm.querySelector('button[type="submit"]');
         const original = btn.textContent;
 
-        btn.disabled = true;
-        btn.textContent = 'Enviando…';
+        const data = new FormData(contactForm);
+        const get = (k) => (data.get(k) || '').toString().trim();
 
-        setTimeout(() => {
-            if (status) status.textContent = 'Gracias — tu consulta fue enviada. William se pondrá en contacto en menos de 48 horas.';
-            contactForm.reset();
-            btn.disabled = false;
-            btn.textContent = original;
-        }, 700);
+        const name = [get('firstName'), get('lastName')].filter(Boolean).join(' ');
+        const lines = [
+            '*Nueva consulta — William Cely Photography*',
+            '',
+            'Nombre: ' + (name || '—'),
+            'Correo: ' + (get('email') || '—'),
+            'Teléfono: ' + (get('phone') || '—'),
+            'Tipo de sesión: ' + (get('session') || '—'),
+            'Fecha preferida: ' + (get('date') || '—'),
+            '',
+            'Mensaje:',
+            get('message') || '—'
+        ];
+
+        const url = 'https://wa.me/' + WHATSAPP_NUMBER +
+            '?text=' + encodeURIComponent(lines.join('\n'));
+
+        // Open WhatsApp (app or web) with the inquiry pre-filled
+        window.open(url, '_blank', 'noopener');
+
+        if (status) status.textContent = 'Abriendo WhatsApp… toca enviar para completar tu consulta. William se pondrá en contacto en menos de 48 horas.';
+        contactForm.reset();
+        btn.disabled = false;
+        btn.textContent = original;
     });
 }
 
