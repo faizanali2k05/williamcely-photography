@@ -645,6 +645,42 @@ section { padding: 6rem 0; }
     margin-right: auto;
 }
 
+/* Add-on / extras bar */
+.pkg-addon {
+    max-width: 780px;
+    margin: 2.4rem auto 0;
+    padding: 1.4rem 1.6rem;
+    background: var(--bg-alt);
+    border: 1px solid #ece4d5;
+    border-radius: 4px;
+    text-align: center;
+}
+.pkg-addon-title {
+    font-family: var(--serif);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+}
+.pkg-addon p {
+    margin: 0.25rem 0;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+}
+.pkg-addon .addon-price {
+    color: var(--ink);
+    font-weight: 600;
+    font-style: normal;
+}
+.pkg-addon-extras {
+    margin-top: 0.9rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid #ece4d5;
+}
+.pkg-addon-extras .pkg-addon-title { margin-bottom: 0.4rem; }
+
 /* Wider tab bar for 4 categories */
 .pkg-tabs.pkg-tabs-wide {
     max-width: 640px;
